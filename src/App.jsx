@@ -1,12 +1,12 @@
 
 import Count from "containers/Count"
-import Name from 'containers/Name'
+import Person from 'containers/Person'
 
 function App() {
   return (
     <div className="App">
       <Count />
-      <Name />
+      <Person />
     </div>
   );
 }

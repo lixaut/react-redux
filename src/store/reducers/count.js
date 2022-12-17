@@ -1,5 +1,5 @@
 
-import { ADD, SUB, ADD5 } from "./constant"
+import { ADD, SUB } from "../constant"
 
 const initState = 0
 export default function countReducer(preState = initState, action) {
@@ -9,8 +9,6 @@ export default function countReducer(preState = initState, action) {
       return preState + +data
     case SUB:
       return preState - +data
-    case ADD5:
-      return preState + data
     default:
       return preState
   }

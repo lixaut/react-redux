@@ -3,4 +3,4 @@
 
 export const ADD = 'add'
 export const SUB = 'sub'
-export const ADD5 = 'add5'
+export const ADD_PERSON = 'addP'

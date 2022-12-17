@@ -5,7 +5,7 @@ import {
   createAddAction, 
   createSubAction, 
   createAddAsyncAction
-} from 'redux/count_action'
+} from 'store/actions/count'
 
 // 定义 Count UI组件
 class Count extends Component {
@@ -32,7 +32,7 @@ class Count extends Component {
   render() {
     return (
       <div className="count">
-        <h1>当前求和为：{this.props.state}</h1>
+        <h1>当前求和为：{this.props.countState}</h1>
         <select ref={r => this.selectNumber = r}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -48,7 +48,7 @@ class Count extends Component {
 }
 
 // 定义 Count 容器组件
-export default connect(state => ({ state }), {
+export default connect(state => ({ countState: state.countState }), {
     add: createAddAction,
     sub: createSubAction,
     asyncAdd: createAddAsyncAction
