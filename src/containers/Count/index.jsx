@@ -1,11 +1,7 @@
 
 import { Component } from "react"
 import { connect } from 'react-redux'
-import { 
-  createAddAction, 
-  createSubAction, 
-  createAddAsyncAction
-} from 'store/actions/count'
+import { add, sub, addAsync } from 'store/actions/count'
 
 // 定义 Count UI组件
 class Count extends Component {
@@ -21,18 +17,18 @@ class Count extends Component {
   }
   // 奇数加
   oddAdd = () => {
-    if (this.props.state % 2 === 0) return
+    if (this.props.count % 2 === 0) return
     this.add()
   }
   // 异步加
   asyncAdd = () => {
     const { value } = this.selectNumber
-    this.props.asyncAdd(value, 1000)
+    this.props.addAsync(value, 1000)
   }
   render() {
     return (
       <div className="count">
-        <h1>当前求和为：{this.props.countState}</h1>
+        <h1>当前总人数为：{this.props.person.length}</h1>
         <select ref={r => this.selectNumber = r}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -48,8 +44,7 @@ class Count extends Component {
 }
 
 // 定义 Count 容器组件
-export default connect(state => ({ countState: state.countState }), {
-    add: createAddAction,
-    sub: createSubAction,
-    asyncAdd: createAddAsyncAction
-})(Count)
+export default connect(state => ({
+  count: state.count,
+  person: state.person
+}), { add, sub, addAsync })(Count)

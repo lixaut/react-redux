@@ -1,16 +1,10 @@
 
-import countReducer from './reducers/count'
-import personReducer from './reducers/person'
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import reducer from 'store/reducers'
 import {
   legacy_createStore as createStore,
-  applyMiddleware,
-  combineReducers
+  applyMiddleware
 } from 'redux'
 
-const allReducer = combineReducers({
-  countState: countReducer,
-  personState: personReducer
-})
-
-export default createStore(allReducer, applyMiddleware(thunk))
+export default createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))
